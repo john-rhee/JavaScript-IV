@@ -33,15 +33,16 @@ class Student extends Person {
         this.className = attribs.className;
         this.favSubjects = attribs.favSubjects;
     }  
-    listsSubjects()  {
-        console.log(this.favSubjects);
-    }
+       listsSubjects()  {
+        return `${this.favSubjects}`;
+      };
+     
     PRAssignment(subject)  {
-        return `${student.name} has submitted a PR for ${subject}`;
+         return `${this.name} has submitted a PR for ${subject}`;
     }
-    sprintChallenge(subject)  {
-        return `${student.name} has begun sprint challenge on ${subject}`;
-    }
+     sprintChallenge(subject)  {
+        return `${this.name} has begun sprint challenge on ${subject}`;
+     }
 }
 
 class ProjectManager extends Instructor {
@@ -53,9 +54,9 @@ class ProjectManager extends Instructor {
     standUp(name,channel)  {
         return `${name} announces to ${channel}, @channel standy times!​​​​​`;
     }
-    debugsCode(name, subject)  {
-        return `${name} debugs ${student.name}'s code on ${subject}`;
-    }
+      debugsCode(student, subject)  {
+          return `${this.name} debugs ${student.name}'s code on ${subject}`;
+     }
 }
 
 //Person
@@ -82,8 +83,6 @@ const sara = new Person({
 
 const fred = new Instructor({
     name: 'Fred',
-    location: 'Bedrock',
-    age: 37,
     favLanguage: 'JavaScript',
     specialty: 'Front-end',
     catchPhrase: `Don't forget the homies`
@@ -91,17 +90,13 @@ const fred = new Instructor({
 
 const jenny = new Instructor({
     name: 'Jenny',
-    location: 'Arizona',
-    age: 33,
     favLanguage: 'Python',
     specialty: 'Back-end',
-    catchPhrase: `Hello everyone `
+    catchPhrase: `Hello everyone`
   });
 
 const chris = new Instructor({
-    name: 'Chirs',
-    location: 'Texas',
-    age: 17,
+    name: 'Chris',
     favLanguage: 'Java',
     specialty: 'Fullstack',
     catchPhrase: `Let's go`
@@ -111,10 +106,11 @@ const chris = new Instructor({
 //Student 
 
 const don = new Student ({
+    name:'Don',
     previousBackground: 'management',
     className: 'CS332',
-    favSubjects: 'JavaScript',
-    listsSubjects: 'JavaScript',
+    favSubjects: ['Html', 'CSS', 'JavaScript'],
+    
     PRAssignment: [
         'Don',
         'JavaScript',
@@ -126,10 +122,11 @@ const don = new Student ({
   });
 
 const jon = new Student ({
+    name:'Jon',
     previousBackground: 'retail',
     className: 'DS3234',
-    favSubjects: 'Python',
-    listsSubjects: 'Data',
+    favSubjects: ['Html', 'CSS', 'JavaScript'],
+    
     PRAssignment: [
         'John',
         'Python',
@@ -141,10 +138,11 @@ const jon = new Student ({
 });
 
 const jen = new Student ({
+    name:'Jen',
     previousBackground: 'student',
     className: 'CS2312',
-    favSubjects: 'Html',
-    listsSubjects: 'CSS',
+    favSubjects: ['Html', 'CSS', 'JavaScript'],
+    
     PRAssignment: [
         'Jen',
         'CSS',
@@ -158,6 +156,7 @@ const jen = new Student ({
 //Project Manager
 
 const henry = new ProjectManager ({
+    name:'Henry',
     gradClassName: 'CS832',
     favInstructor: 'Glen',
     standUp: [
@@ -172,6 +171,7 @@ const henry = new ProjectManager ({
   });
 
 const pearl = new ProjectManager ({
+    name:'Pearl',
     gradClassName: 'CS334',
     favInstructor: 'Ken',
     standUp: [
@@ -186,6 +186,7 @@ const pearl = new ProjectManager ({
 });
 
 const ron = new ProjectManager ({
+    name:'Ron',
     gradClassName: 'CS654',
     favInstructor: 'Sean',
     standUp: [
@@ -199,6 +200,11 @@ const ron = new ProjectManager ({
       ],
 });
 
-console.log(ron.favInstructor);
-console.log(ron.standUp);
-console.log(jen.PRAssignment);
+console.log(bob.speak());
+console.log(fred.demo('Javascript'));
+console.log(jenny.grade(jenny,"Javascript"));
+console.log(don.listsSubjects());
+console.log(don.PRAssignment("Javascript"));
+console.log(ron.standUp("Ron","Help channel"));
+console.log(pearl.debugsCode(pearl,"Javascript"));
+
